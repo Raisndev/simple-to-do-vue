@@ -14,12 +14,19 @@ function addTask(newTask) {
     done: false
   })
 }
+
+function toggleDone(taskId) {
+  const task = tasks.value.find(task => task.id === taskId)
+  if(task) {
+    task.done = !task.done
+  }
+}
 </script>
 
 <template>
   <main class="max-w-xl m-auto">
     <TaskForm @add-task="addTask"/>
-    <TasksList :tasks/>
+    <TasksList :tasks @toggle-done="toggleDone"/>
 
   </main>
 </template>
